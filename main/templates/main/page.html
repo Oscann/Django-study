@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{page.name}}</title>
+    <link rel="stylesheet" href="{% static 'page/styles.css' %}" />
+  </head>
+  <body>
+    <form method="post">
+      <div class="header">
+        <div>
+          <h1>{{page.name}}</h1>
+          <button type="submit" name="save" id="save" value="save">Save</button>
+        </div>
+
+        <div>
+          <a href="/">Go Back</a>
+        </div>
+      </div>
+      {% for text_block in blocks %}
+      <div class="block">
+        <textarea type="text" name="{{text_block.id}}" id="in_text">
+{{text_block.content}}
+</textarea
+        >
+        <button
+          type="submit"
+          name="delete"
+          id="delete"
+          value="delete-{{text_block.id}}"
+        >
+          Delete
+        </button>
+      </div>
+      {% endfor %}
+      <textarea type="text" name="in_text" id="in_text" autofocus></textarea>
+    </form>
+  </body>
+</html>

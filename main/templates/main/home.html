@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+  </head>
+  <body>
+    <h1>HOME PAGE</h1>
+    <form method="post">
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Page name"
+        required
+      />
+      <button type="submit" name="create-page" id="create-page">
+        Create Page
+      </button>
+    </form>
+    <nav>
+      <ul>
+        {% for page in pages%}
+        <li><a href="/page/{{user.username}}/{{page.id}}">{{page.name}}</a></li>
+        {% empty %}
+        <p>Empty list :(</p>
+        {% endfor %}
+      </ul>
+    </nav>
+  </body>
+</html>
